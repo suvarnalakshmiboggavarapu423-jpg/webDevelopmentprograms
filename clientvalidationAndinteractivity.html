@@ -1,0 +1,54 @@
+!DOCTYPE html>
+<html>
+    <head>
+        <body>
+            <h2>From validation Example</h2>
+            <form onsubmit = "return validateForm()">
+                <label>Email:</label>
+                <input type="text" id = "email" onkeyup="validateEmail()">
+                <span id="emailError" style="color:red"></span><br><br>
+                <label>Password (min 6 chars):</label>
+                <input type ="password" onkeyup="validatePassword()">
+                <span id="PasswordError" style="color:red"></span><br><br>
+                <button type="submit">Submit</button>
+            </form>
+            <script>
+                function validateEmail() {
+                   let email = document.getElementById("email").value;
+                   let errorSpan = document.getElementById("emailError");
+                   if (!email.includes("@")) {
+                    errorSpan.innerText = "Invalid email";
+                    return false;
+
+                   } else {
+                    errorSpan.innerText = "";
+                    return true;
+                   }
+                }
+                function validatePassword() {
+                    let password = document.getElementById("password").value;
+                    let errorSpan = document.getElementById("passwordError");
+                    if (pwd.length < 6) {
+                        errorSpan.innerText = "Password too short!";
+                        return false;
+                    } else {
+                        errorSpan.innerText = "";
+                        return true;
+                        
+                    }
+                }
+                function validateForm() {
+                    let isEmailValid = validateEmail();
+                    let isPasswordValid = validatePassword();
+                    if (isEmailValid && isPasswordValid) {
+                        alert("Please submitted successfully!");
+                        return true;
+                    } else {
+                        alert("Please fix errors before submitting.");
+                        return false;
+                    }
+                }
+            </script>
+        </body>
+    </head>
+</html>
